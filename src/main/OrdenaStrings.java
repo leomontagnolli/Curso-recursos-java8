@@ -12,8 +12,7 @@ public class OrdenaStrings {
 		palavras.add("editora casa do codigo");
 		palavras.add("caelum");
 
-		// Comparator<String> comparador = new ComparadorPorTamanho();
-		// Collections.sort(palavras, comparador);
+		 Comparator<String> comparador = new ComparadorPorTamanho();
 
 //		palavras.sort((s1, s2) -> {
 //			if (s1.length() < s2.length())
@@ -25,8 +24,10 @@ public class OrdenaStrings {
 //			return 0;
 //
 //		});
-
-		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+//
+//		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+		
+		palavras.sort(Comparator.comparing(s -> s.length()));
 
 		System.out.println(palavras);
 
@@ -34,7 +35,11 @@ public class OrdenaStrings {
 			System.out.println(string);
 		}
 
-		palavras.forEach(p -> System.out.println(p));
+		palavras.forEach(System.out::println);
+
+		new Thread(() -> {
+			System.out.println("Executando um Runnable");
+		}).start();
 
 	}
 
